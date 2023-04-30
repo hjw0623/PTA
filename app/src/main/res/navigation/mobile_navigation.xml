@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/navigation_home">
     <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="com.example.pta.ui.dashboard.DashboardFragment"
-        android:label="fragment_home"
+        android:id="@+id/navigation_home"
+        android:name="com.example.pta.ui.home.HomeFragment"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.pta.ui.home.HomeFragment"
-        android:label="fragment_camera"
+        android:id="@+id/navigation_camera"
+        android:name="com.example.pta.ui.camera.CameraFragment"
+        android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />
     <fragment
-        android:id="@+id/notificationsFragment"
-        android:name="com.example.pta.ui.notifications.NotificationsFragment"
-        android:label="fragment_map"
+        android:id="@+id/navigation_map"
+        android:name="com.example.pta.ui.map.MapFragment"
+        android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.pta.ui.notifications
+package com.example.pta.ui.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.pta.databinding.FragmentNotificationsBinding
+import com.example.pta.databinding.FragmentMapBinding
 
-class NotificationsFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+class MapFragment : Fragment() {
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentMapBinding? = null
+
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,16 +22,17 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val mapViewModel =
+            ViewModelProvider(this).get(MapViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textMap
+        mapViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 
