@@ -1,21 +1,21 @@
 package com.example.pta.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.pta.R
+
+import com.example.pta.SearchActivity
 import com.example.pta.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,7 +28,23 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val member = view?.findViewById<TextView>(R.id.membershipButton)
+        val packageName = "com.tms"
+        val packageManager = requireContext().packageManager
+        val intent = packageManager.getLaunchIntentForPackage(packageName)
+        val intentPlaystore = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+
+        binding.membershipButton.setOnClickListener {
+            try {
+                startActivity(intent)
+            } catch (e: Exception) {
+                startActivity(intentPlaystore)
+            }
+        }
+            binding.searchButton.setOnClickListener {
+                val intent = Intent(getActivity(), SearchActivity::class.java)
+                startActivity(intent)
+            }
+
 
         return root
     }

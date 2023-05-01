@@ -30,9 +30,8 @@ class CameraFragment : Fragment() {
         _binding = FragmentCameraBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val cameraView: TextView = binding.textCamera
-        cameraViewModel.text.observe(viewLifecycleOwner) {
-            cameraView.text = it
+        binding.cameraButton.setOnClickListener {
+
         }
 
 
